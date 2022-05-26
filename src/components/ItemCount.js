@@ -6,8 +6,8 @@ import { useState } from 'react';
 
 
 const ItemCount = () =>{
- let stock = 6;
-  let initial = 1;
+ let stock;
+  let initial;
    const [items,setItems] = useState(1);
     const onAdd = () =>{
       if (items < stock){
