@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import ItemCount from "./ItemCount";
-import ItemList from "./ItemList";
+
+import ItemDetail from "./ItemDetail";
+import { useEffect, useState } from "react"
 import productsResponse from "../json/products.json"
 let encontrado = true;
+
 
 const fetchSearchProduct = (task) =>{
     return new Promise((resolve,reject) => { 
@@ -12,23 +13,22 @@ const fetchSearchProduct = (task) =>{
               }else{
                   reject("Error")
               }
-          },3000);
+          },1000);
     })
 }
-const ItemListContainer = () =>{
+const ItemDetailContainer = () =>{
     const [products,setProducts] = useState([]);
 
     useEffect(() => {
         fetchSearchProduct(productsResponse)            
-            .then(response => setProducts(response.results))
+            .then(response => setProducts(response.results[2]))
             .catch(err => console.log(err));
     },[]);
 
     return (
         <>
-        <p></p>        
-        
+         <ItemDetail producto = {products} /> 
         </>
     )
 }
-export default ItemListContainer;
+export default ItemDetailContainer
