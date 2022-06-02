@@ -1,9 +1,6 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+
+import {Card,  CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
+import {Link} from 'react-router-dom';
 
 const Item = ({producto}) =>{
     return (
@@ -22,6 +19,10 @@ const Item = ({producto}) =>{
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {producto.price}
+          </Typography>
+          <Typography variant="body2" color="text.secondary"><Link to = {`/item/${producto.id}`}>
+            Details
+            </Link>
           </Typography>
         </CardContent>
       </CardActionArea>

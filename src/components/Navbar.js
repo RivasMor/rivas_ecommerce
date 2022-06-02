@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CartWidget from './CartWidget';
+import { MenuItem } from '@mui/material';
+import {Link} from  'react-router-dom';
 
 
 
@@ -24,13 +26,27 @@ const NavBar = () =>{
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 3 }}>
-            Store
+          
+          <MenuItem ><Link to = "/" style = {{textDecoration:'none', color:'white'}}>
+          <Typography  variant="h5" component="div" sx={{ flexGrow: 3 }}>
+            STORE
+           
           </Typography>
+          </Link>
+          </MenuItem>
+        <MenuItem>
+                  <Typography textAlign="center"><Link to="/category/2"  style = {{textDecoration:'none', color:'white'}}> Abrigos </Link></Typography>
+                </MenuItem>
+                <MenuItem >
+                  <Typography textAlign="center"><Link to="/category/1"  style = {{textDecoration:'none', color:'white'}}> Remeras  </Link></Typography>
+                </MenuItem>
+                <MenuItem>
+                <Button color="inherit" edge="end">Login</Button>
+          <CartWidget/>
+                </MenuItem>
        
          
-          <Button color="inherit" edge="end">Login</Button>
-          <CartWidget/>
+          
         </Toolbar>
       </AppBar>
     </Box>

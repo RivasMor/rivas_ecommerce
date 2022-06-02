@@ -1,10 +1,11 @@
 
-import ItemDetail from "./ItemDetail";
 import { useEffect, useState } from "react"
-import productsResponse from "../json/products.json"
+import {useParams, Link} from 'react-router-dom';
+import { Button } from '@mui/material';
+import ItemDetail from "./ItemDetail";
+import productsResponse from "../json/products.json";
+
 let encontrado = true;
-
-
 const fetchSearchProduct = (task) =>{
     return new Promise((resolve,reject) => { 
           setTimeout(()=>{
@@ -17,17 +18,19 @@ const fetchSearchProduct = (task) =>{
     })
 }
 const ItemDetailContainer = () =>{
-    const [products,setProducts] = useState([]);
+    const [product,setProduct] = useState({});
+    const {id} = useParams();
 
     useEffect(() => {
         fetchSearchProduct(productsResponse)            
-            .then(response => setProducts(response.results[2]))
+            .then(response => setProduct(response.results.find(prod => prod.id === id)))
             .catch(err => console.log(err));
-    },[]);
+    },[id]);
 
     return (
         <>
-         <ItemDetail producto = {products} /> 
+         <ItemDetail producto = {product} />  
+         <Link to = '/'><Button size="small" variant="contained">Volver</Button></Link>
         </>
     )
 }
