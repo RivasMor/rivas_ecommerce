@@ -5,30 +5,34 @@ import { useState } from 'react';
 
 
 
-const ItemCount = () =>{
- let stock;
-  let initial;
+const ItemCount = ({stock,initial,onAdd}) =>{
+ 
    const [items,setItems] = useState(1);
-    const onAdd = () =>{
+    const more = () =>{
       if (items < stock){
         setItems(items + 1);
       }
     }  
-    const onLess = () =>{
+    const less = () =>{
       if((items <= stock)&&(items>initial)){
         setItems(items - 1);
       }
     }  
+    const onAddLocal = () => {
+      onAdd(items);
+
+    }
+    
         
 
     return(
       <>
   <ButtonGroup variant="outlined" aria-label="outlined primary button group">
-  <Button onClick={onLess}>-</Button>
+  <Button onClick={less}>-</Button>
   <Button>{items}</Button>
-  <Button onClick={onAdd}>+</Button>
+  <Button onClick={more}>+</Button>
   
-<Button variant="contained" >Add to Cart</Button>
+<Button onClick = {onAddLocal}  variant="contained" >Add to Cart</Button>
 </ButtonGroup>
 
 

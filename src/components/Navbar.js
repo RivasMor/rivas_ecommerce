@@ -11,7 +11,6 @@ import { MenuItem } from '@mui/material';
 import {Link} from  'react-router-dom';
 
 
-
 const NavBar = () =>{
     return( 
     <Box sx={{ flexGrow: 1,}}>

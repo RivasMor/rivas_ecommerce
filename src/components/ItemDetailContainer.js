@@ -29,8 +29,7 @@ const ItemDetailContainer = () =>{
 
     return (
         <>
-         <ItemDetail producto = {product} />  
-         <Link to = '/'><Button size="small" variant="contained">Volver</Button></Link>
+         <ItemDetail producto = {product} /> 
         </>
     )
 }
