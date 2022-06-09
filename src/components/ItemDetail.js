@@ -1,19 +1,21 @@
 import {Card, Button, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
 import ItemCount from './ItemCount';
 import {Link} from  'react-router-dom';
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import ButtonCheckOut from './ButtonCheckOut';
+import {CartContext} from './CartContext';
 const ItemDetail = ({producto}) => {
   const [itemCount, setItemCount] = useState(0);
-
+  const prueba = useContext(CartContext);
+  
   const onAdd = (quantAdd) =>{
-    console.log(quantAdd)
     setItemCount(quantAdd);
-
+    console.log(typeof(quantAdd));
+    prueba.addToCart(producto,quantAdd);
   }
     return(
         <>
-        <Card sx={{ maxWidth: 345}}>
+          <Card sx={{ maxWidth: 345}}>
       <CardActionArea>
         <CardMedia
           component="img"

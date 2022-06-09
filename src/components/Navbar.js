@@ -40,9 +40,9 @@ const NavBar = () =>{
                   <Typography textAlign="center"><Link to="/category/1"  style = {{textDecoration:'none', color:'white'}}> Remeras  </Link></Typography>
                 </MenuItem>
                 <MenuItem>
-                <Button color="inherit" edge="end">Login</Button>
-          <CartWidget/>
+                <Button color="inherit" edge="end">Login</Button>          
                 </MenuItem>
+                <CartWidget/>
        
          
           
