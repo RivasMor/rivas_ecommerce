@@ -3,17 +3,21 @@ export const CartContext = createContext();
    
 const CartContextProvider = ({children}) =>{
     const [cartList,setCartList] = useState([]);
-    const addToCart = (producto,cantidad) =>{
-        for (let i=0;i<cantidad;i++){
-            setCartList(oldArray => [...oldArray,producto] );
-        }
-        debugger;
+    const addToCart = (producto,cantidad) =>{        
+        let item = {
+                    prod: producto,
+                    cant: cantidad
+                }
+        setCartList([...cartList, item])
+        
     }
-    const removeProduct = (id,producto) =>{
-        producto.filter (prod => prod.id == id)
+    const removeProduct = (eve, id) =>{
+        eve.preventDefault();
+        let newArray = cartList.filter (item => item.prod.id !== id)
+        setCartList(newArray);
     }
     return(
-        <CartContext.Provider value= {{cartList, addToCart}}>
+        <CartContext.Provider value= {{cartList, addToCart,removeProduct}}>
             {children}
         </CartContext.Provider>
     )

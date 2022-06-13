@@ -10,7 +10,6 @@ const ItemDetail = ({producto}) => {
   
   const onAdd = (quantAdd) =>{
     setItemCount(quantAdd);
-    console.log(typeof(quantAdd));
     prueba.addToCart(producto,quantAdd);
   }
     return(

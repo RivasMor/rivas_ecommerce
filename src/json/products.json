@@ -4,7 +4,8 @@
             "color":"Verde",
             "image":"https://i.pinimg.com/originals/c8/29/93/c8299346684d25744ed0bf6ec0579ff6.jpg",
             "stock":"10",
-            "category": 1},
+            "category": 1
+            },
 
             {"id":"1020",
             "name":"Remera Hudson",
@@ -28,7 +29,7 @@
                 "image":"https://i.pinimg.com/236x/d2/04/a1/d204a164953035ba29f414bcf82d1b50--baggy-sweaters-oversized-sweaters.jpg",
                 "stock":5,
                 "category": 2},
-                {"id":1050,
+                {"id":"1050",
                     "name":"Sweater Antartida",
                     "price":8000,
                     "color":"Claro",
