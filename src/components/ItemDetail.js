@@ -33,7 +33,7 @@ const ItemDetail = ({producto}) => {
             {producto.price}
           </Typography>
         </CardContent>         
-        <Link to = '/'><Button size="small" variant="contained">Volver</Button></Link>
+        <Link to = '/' style = {{textDecoration:'none', color:'white'}}><Button size="small" variant="contained">Volver</Button></Link>
       </CardActionArea>
     </Card>
     {

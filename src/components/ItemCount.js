@@ -27,6 +27,7 @@ const ItemCount = ({stock,initial,onAdd}) =>{
 
     return(
       <>
+    <div style={{height:'40px'}}></div>  
   <ButtonGroup variant="outlined" aria-label="outlined primary button group">
   <Button onClick={less}>-</Button>
   <Button>{items}</Button>

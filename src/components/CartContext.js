@@ -8,13 +8,28 @@ const CartContextProvider = ({children}) =>{
                     prod: producto,
                     cant: cantidad
                 }
-        setCartList([...cartList, item])
+        let exist = cartList.find(item => item.prod.id === producto.id);
+        if(exist === undefined){
+            setCartList([...cartList, item])
+        }     
+        else {
+            let auxArray = cartList.filter(item => item.prod.id !== producto.id)
+            exist.cant += cantidad;
+            auxArray.push(exist);
+            setCartList(auxArray);
+
+        }
+        
         
     }
+    
     const removeProduct = (eve, id) =>{
         eve.preventDefault();
         let newArray = cartList.filter (item => item.prod.id !== id)
         setCartList(newArray);
+    }
+    const estimatedTotal = () =>{
+        cartList.map(item => console.log(item.prod.price))
     }
     return(
         <CartContext.Provider value= {{cartList, addToCart,removeProduct}}>
