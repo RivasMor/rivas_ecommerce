@@ -1,52 +1,76 @@
-import {Card, Button, CardContent, CardMedia, Typography, CardActionArea } from '@mui/material';
-import ItemCount from './ItemCount';
-import {Link} from  'react-router-dom';
-import {useContext, useState} from 'react';
-import ButtonCheckOut from './ButtonCheckOut';
-import {CartContext} from './CartContext';
-const ItemDetail = ({producto}) => {
+import {
+  Card,
+  CardMedia,
+  Typography,
+  CardActionArea,
+  Grid,
+} from "@mui/material";
+import ItemCount from "./ItemCount";
+import { useContext, useState } from "react";
+import ButtonCheckOut from "./ButtonCheckOut";
+import { CartContext } from "./CartContext";
+//Vista del producto elegido con mas detalles, y opcion a elegir cantidad
+const ItemDetail = ({ producto }) => {
   const [itemCount, setItemCount] = useState(0);
   const prueba = useContext(CartContext);
-  
-  const onAdd = (quantAdd) =>{
+
+  const onAdd = (quantAdd) => {
     setItemCount(quantAdd);
-    prueba.addToCart(producto,quantAdd);
-  }
-    return(
-        <>
-          <Card sx={{ maxWidth: 345}}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="210"
-          image={producto.image}
-          alt=""
-        />
-        <CardContent>
-        <Typography variant="body2" color="text.secondary">
+    prueba.addToCart(producto, quantAdd);
+  };
+  return (
+    <>
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={10}
+        sx={{ marginTop: "1%" }}
+      >
+        <Grid item md={4} xs={11}>
+          <Card>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="600"
+                image={producto.image}
+                alt=""
+              />
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item md={4}>
+          <Typography
+            gutterBottom
+            variant="h4"
+            component="div"
+            title=""
+            color="#ab6f45"
+          >
+            {producto.name}
+          </Typography>
+
+          <Typography gutterBottom variant="body1" color="#ab6f45">
             {producto.description}
           </Typography>
-          <Typography gutterBottom variant="h6" component="div" title="">  
-          {producto.name}          
+          <Typography gutterBottom variant="h4" color="#ab6f45">
+            ${producto.price}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {producto.price}
-          </Typography>
-        </CardContent>         
-        <Link to = '/' style = {{textDecoration:'none', color:'white'}}><Button size="small" variant="contained">Volver</Button></Link>
-      </CardActionArea>
-    </Card>
-    {
-    (itemCount === 0) 
-    ? <ItemCount stock = {5} initial = {0}  onAdd = {onAdd}/>
-    : <ButtonCheckOut/>      
-    }
-        
-      
-    
-    
-        </>
-    )
-    
-}
+          {producto.stock > 0 ? (
+            itemCount === 0 ? (
+              <ItemCount stock={producto.stock} initial={0} onAdd={onAdd} />
+            ) : (
+              <Grid item md={4}>
+                <ButtonCheckOut />
+              </Grid>
+            )
+          ) : (
+            <></>
+          )}
+        </Grid>
+      </Grid>
+    </>
+  );
+};
 export default ItemDetail;

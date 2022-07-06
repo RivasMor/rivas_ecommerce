@@ -1,36 +1,29 @@
-
-import { useEffect, useState } from "react"
-import {useParams, Link} from 'react-router-dom';
-import { Button } from '@mui/material';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import productsResponse from "../json/products.json";
+import db from "../json/firebaseConfig";
+import { getDoc, doc } from "firebase/firestore";
 
-let encontrado = true;
-const fetchSearchProduct = (task) =>{
-    return new Promise((resolve,reject) => { 
-          setTimeout(()=>{
-              if(encontrado){
-                  resolve(task);
-              }else{
-                  reject("Error")
-              }
-          },1000);
-    })
-}
-const ItemDetailContainer = () =>{
-    const [product,setProduct] = useState({});
-    const {id} = useParams();
+const ItemDetailContainer = () => {
+  const [product, setProduct] = useState({});
+  const { id } = useParams();
 
-    useEffect(() => {
-        fetchSearchProduct(productsResponse)            
-            .then(response => setProduct(response.results.find(prod => prod.id === id)))
-            .catch(err => console.log(err));
-    },[id]);
+  useEffect(() => {
+    const docRef = doc(db, "products", id);
+    getDoc(docRef)
+      .then((result) =>
+        setProduct({
+          id: result.id,
+          ...result.data(),
+        })
+      )
+      .catch((err) => console.log(err));
+  }, [id]);
 
-    return (
-        <>
-         <ItemDetail producto = {product} /> 
-        </>
-    )
-}
-export default ItemDetailContainer
+  return (
+    <>
+      <ItemDetail producto={product} />
+    </>
+  );
+};
+export default ItemDetailContainer;

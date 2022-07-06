@@ -1,15 +1,12 @@
 import {useParams} from 'react-router-dom';
 import { useEffect, useState} from "react";
 import ItemList from "./ItemList";
-import productsResponse from "../json/products.json";
-import { collection, getDocs, orderBy,where, query } from "firebase/firestore";
+import { collection, getDocs, orderBy,where, query} from "firebase/firestore";
 import db from '../json/firebaseConfig';
-import { async } from '@firebase/util';
-import { ConstructionOutlined } from '@mui/icons-material';
+import { Grid } from '@mui/material';
+import Footer from './Footer';
 
-
-let encontrado = true;
-
+//Se hacen consultas en la BD y establece el grid para contener los items hijos
 const ItemListContainer = () =>{
     const [products,setProducts] = useState([]);
     const {id} = useParams();
@@ -25,8 +22,10 @@ const ItemListContainer = () =>{
             id: document.id,
             ...document.data()
         }));
+        
         return dataFromFirestone;
     }
+    
 
     useEffect(() =>{
         firestoneFetch(id)
@@ -34,8 +33,14 @@ const ItemListContainer = () =>{
         .catch(err => console.log(err))
     },[id])
    
-    return (        
-        <ItemList p1 = {products} />          
+    return (   
+        <>
+        <Grid container spacing={1}  sx={{margin: '3%', padding:'4%'}}>         
+        <ItemList p1 = {products} />         
+        </Grid>
+        <Footer/>
+        </>     
+             
     )
 }
 export default ItemListContainer;

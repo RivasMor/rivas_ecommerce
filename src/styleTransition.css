@@ -1,0 +1,53 @@
+.display {
+    position: relative;
+    z-index: 1;
+   
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 350ms;
+  }
+  
+  .display:active {
+    background-color: gray;
+  }
+  
+  
+  /* This fires as soon as the element enters the dorm */
+  .list-transition-enter,
+  .list-transition-appear {
+    /*We give the list the initial dimension of the list button*/
+    top: 100;
+    width: 200px;
+    height: 0;
+    max-height: 100px;
+    color: transparent;
+  }
+  /* This is where we can add the transition*/
+  .list-transition-enter-active,
+  .list-transition-appear-active {
+    top: 200;
+    width: 200px;
+    height: 100px;
+    max-height: 300px;
+    background-color: #9e8949;
+    transition: all 400ms;
+  }
+  
+  /* This fires as soon as the this.state.showList is false */
+  .list-transition-exit {
+    top: 45px;
+    width: 10px;
+    max-height: 300px;
+    background-color: pink;
+  }
+  /* fires as element leaves the DOM*/
+  .list-transition-exit-active {
+    top: 100px;
+    width: 120px;
+    max-height: 150px;
+    color: transparent;
+    background-color: #5a564c;
+    transition: all 400ms;
+  }
