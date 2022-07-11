@@ -5,7 +5,11 @@ import NavBar from './components/NavBar';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import CartContextProvider from './components/CartContext';
+import { CartContext } from './components/CartContext';
+import Footer from './components/Footer';
+import { useContext } from 'react';
 function App() {
+  const context = useContext(CartContext);
   return (
     <CartContextProvider>     
       <BrowserRouter>
@@ -18,8 +22,11 @@ function App() {
           <Route path = '/Cart' element = {<Cart/>}/>      
         </Routes>         
         </BrowserRouter>
+       
+        
+        
         </CartContextProvider>
-   
+
   );
 }
 export default App;

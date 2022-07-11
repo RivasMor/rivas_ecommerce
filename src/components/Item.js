@@ -15,12 +15,17 @@ const Item = ({ producto }) => {
     <>
       <Card sx={{ maxWidth: 360 }}>
         <CardActionArea>
+        <Link
+              to={`/item/${producto.id}`}
+              style={{ textDecoration: "none", color: "#ab6f45" }}
+            >
           <CardMedia
             component="img"
             height="400"
             image={producto.image}
             alt=""
           />
+          </Link>
           <CardContent>
             <Box display="flex" alignItems="center" justifyContent="center">
               <Link

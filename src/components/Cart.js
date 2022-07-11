@@ -3,6 +3,7 @@ import { CartContext } from "./CartContext";
 import { Button, Grid, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
+import Footer from "./Footer";
 import {
   collection,
   serverTimestamp,
@@ -150,7 +151,7 @@ const Cart = () => {
         </Grid>
       </Grid>
       <Grid container md={12} mt="3%" align="center">
-        <Grid item md={6} xs={12} mb = '2%'>
+        <Grid item md={6} xs={12} mb = '13%'>
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained" sx={styleButton}>
               Seguir Comprando
@@ -165,11 +166,14 @@ const Cart = () => {
               variant="contained"
               sx={styleButton}
               onClick={createOrderBuy}
+              
             >
               Finalizar compra
             </Button>
           )}
         </Grid>
+        
+      <Footer/>
       </Grid>
     </>
   );

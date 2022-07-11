@@ -2,7 +2,12 @@ import { createContext, useState } from "react";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  const [cartList, setCartList] = useState([]);
+  const [cartList, setCartList] = useState([]);  
+  const [loading,setLoading] = useState(true);
+
+  const changeLoading = (val) =>{
+    setLoading(val);
+  }
     
   //Funciones comunes a todo mi proyecto como añadir ,eliminar. 
   const addToCart = (producto, cantidad) => {
@@ -32,7 +37,7 @@ const CartContextProvider = ({ children }) => {
   
   return (
     <CartContext.Provider
-      value={{ cartList, addToCart, removeProduct, removeList }}
+      value={{ cartList, addToCart, removeProduct, removeList, loading, changeLoading }}
     >
       {children}
     </CartContext.Provider>

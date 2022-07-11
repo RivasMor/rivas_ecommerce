@@ -9,6 +9,7 @@ import ItemCount from "./ItemCount";
 import { useContext, useState } from "react";
 import ButtonCheckOut from "./ButtonCheckOut";
 import { CartContext } from "./CartContext";
+
 //Vista del producto elegido con mas detalles, y opcion a elegir cantidad
 const ItemDetail = ({ producto }) => {
   const [itemCount, setItemCount] = useState(0);
@@ -26,14 +27,14 @@ const ItemDetail = ({ producto }) => {
         justifyContent="center"
         alignItems="center"
         spacing={10}
-        sx={{ marginTop: "1%" }}
+        sx={{ marginTop: "1%", marginBottom: '10%' }}
       >
         <Grid item md={4} xs={11}>
           <Card>
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="600"
+                height="700"
                 image={producto.image}
                 alt=""
               />

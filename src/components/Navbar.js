@@ -50,7 +50,7 @@ const NavBar = () => {
                   style={{ textDecoration: "none", color: "white" }}
                 >
                   {" "}
-                  Remeras{" "}
+                  Blusas{" "}
                 </Link>
               </Nav.Link>
               
