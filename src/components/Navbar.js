@@ -24,9 +24,9 @@ const NavBar = () => {
               </Link>
             </Navbar.Brand>          
           </div>
-          <div className="d-block d-sm-none">
+          <div className="d-block d-sm-none ">
             <Navbar.Brand>               
-                <Link to="/" style={{ textDecoration: "none", color: "white", paddingRight: "10%" }}>
+                <Link to="/" style={{ textDecoration: "none", color: "white", paddingRight: "10%"}}>
                   Store
                 </Link>
                 <CartWidget />
